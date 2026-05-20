@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { MapPin, Mail, Phone, Instagram, Facebook, Youtube, Send, CheckCircle } from 'lucide-react';
+import { MapPin, Mail, Phone, Instagram, Facebook, Youtube, Send, CheckCircle, Music2 } from 'lucide-react';
 
 interface FormState {
   nama: string;
@@ -89,52 +89,92 @@ export default function Kontak() {
                   <div>
                     <h4 className="font-semibold text-stone-800 mb-1">WhatsApp</h4>
                     <a href="https://wa.me/6281329602156" className="text-forest-600 hover:text-forest-700 text-sm font-medium">+62 813 2960 2156</a>
-                    <p className="text-stone-400 text-xs mt-0.5">Senin – Jumat, 09.00–17.00 WIB</p>
+                    <p className="text-stone-400 text-xs mt-0.5">Setiap Hari, 08.00–23.00 WIB</p>
                   </div>
                 </div>
               </div>
 
               {/* Sosmed */}
-              <div className="card p-5">
-                <h4 className="font-semibold text-stone-800 mb-4">Media Sosial</h4>
-                <div className="space-y-3">
-                  {[
-                    { icon: Instagram, label: '@mpahimalaya_unimus', platform: 'Instagram', color: 'text-pink-600 bg-pink-50' },
-                    { icon: Facebook, label: 'mpa.himalaya', platform: 'Facebook', color: 'text-blue-600 bg-blue-50' },
-                    { icon: Youtube, label: 'MPA HIMALAYA Official', platform: 'YouTube', color: 'text-red-600 bg-red-50' },
-                  ].map(s => {
-                    const Icon = s.icon;
-                    return (
-                      <a key={s.platform} href="#" className="flex items-center gap-3 p-3 rounded-xl hover:bg-stone-50 transition-colors group">
-                        <div className={`p-2 rounded-lg ${s.color}`}>
-                          <Icon size={16} />
-                        </div>
-                        <div>
-                          <p className="text-xs text-stone-400">{s.platform}</p>
-                          <p className="text-sm font-medium text-stone-700 group-hover:text-forest-700 transition-colors">{s.label}</p>
-                        </div>
-                      </a>
-                    );
-                  })}
-                </div>
-              </div>
+<div className="card p-5">
+  <h4 className="font-semibold text-stone-800 mb-4">Media Sosial</h4>
+
+  <div className="space-y-3">
+    {[
+      {
+        icon: Instagram,
+        label: '@mpahimalaya_unimus',
+        platform: 'Instagram',
+        link: 'https://www.instagram.com/mpahimalaya_unimus/',
+        color: 'text-pink-600 bg-pink-50'
+      },
+      {
+        icon: Facebook,
+        label: 'MPA Himalaya',
+        platform: 'Facebook',
+        link: 'https://www.facebook.com/mpa.himalaya',
+        color: 'text-blue-600 bg-blue-50'
+      },
+      {
+        icon: Youtube,
+        label: 'MPA HIMALAYA Official',
+        platform: 'YouTube',
+        link: 'https://www.youtube.com/@mpahimalayaofficial6936',
+        color: 'text-red-600 bg-red-50'
+      },
+      {
+        icon: Music2,
+        label: '@mpa.himalaya',
+        platform: 'TikTok',
+        link: 'https://www.tiktok.com/@mpa.himalaya',
+        color: 'text-black bg-stone-100'
+      },
+    ].map(s => {
+      const Icon = s.icon;
+
+      return (
+        <a
+          key={s.platform}
+          href={s.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-3 p-3 rounded-xl hover:bg-stone-50 transition-colors group"
+        >
+          <div className={`p-2 rounded-lg ${s.color}`}>
+            <Icon size={16} />
+          </div>
+
+          <div>
+            <p className="text-xs text-stone-400">{s.platform}</p>
+            <p className="text-sm font-medium text-stone-700 group-hover:text-forest-700 transition-colors">
+              {s.label}
+            </p>
+          </div>
+        </a>
+      );
+    })}
+  </div>
+</div>
 
               {/* Jam Operasional */}
-              <div className="card p-5">
-                <h4 className="font-semibold text-stone-800 mb-4">Jam Operasional Sekretariat</h4>
-                <div className="space-y-2">
-                  {[
-                    ['Senin – Jumat', '09.00 – 17.00 WIB'],
-                    ['Sabtu', '09.00 – 13.00 WIB'],
-                    ['Minggu', 'Tutup'],
-                  ].map(([hari, jam]) => (
-                    <div key={hari} className="flex justify-between text-sm">
-                      <span className="text-stone-600">{hari}</span>
-                      <span className={`font-medium ${jam === 'Tutup' ? 'text-red-500' : 'text-stone-800'}`}>{jam}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
+<div className="card p-5">
+  <h4 className="font-semibold text-stone-800 mb-4">
+    Jam Operasional Sekretariat
+  </h4>
+
+  <div className="bg-forest-50 border border-forest-200 rounded-xl p-4 text-center">
+    <p className="text-lg font-bold text-forest-700">
+      BUKA SETIAP HARI
+    </p>
+
+    <p className="text-2xl font-extrabold text-stone-800 mt-1">
+      24 JAM
+    </p>
+
+    <p className="text-sm text-stone-500 mt-2">
+      Tim MPA HIMALAYA siap melayani dan menerima informasi kapan saja.
+    </p>
+  </div>
+</div>
             </div>
 
             {/* Form Kontak */}
@@ -244,25 +284,36 @@ export default function Kontak() {
         </div>
       </section>
 
-      {/* Map placeholder */}
-      <section className="h-72 bg-stone-200 relative overflow-hidden">
-        <img
-          src="https://images.pexels.com/photos/1076240/pexels-photo-1076240.jpeg?auto=compress&cs=tinysrgb&w=1920&h=400&dpr=1"
-          alt="Peta lokasi"
-          className="w-full h-full object-cover opacity-60"
-        />
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="bg-white rounded-2xl shadow-lg px-8 py-5 flex items-center gap-4">
-            <div className="bg-forest-100 p-3 rounded-xl">
-              <MapPin size={24} className="text-forest-700" />
-            </div>
-            <div>
-              <p className="font-semibold text-stone-800">Sekretariat MPA HIMALAYA</p>
-              <p className="text-stone-500 text-sm">Gedung PKM, Universitas Muhammadiyah Semarang</p>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Map */}
+<section className="h-72 relative overflow-hidden">
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d281.90236352346443!2d110.46116465129722!3d-7.020538833442355!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e708c5a129b2071%3A0xc49764f22a42241b!2sMPA%20HIMALAYA!5e0!3m2!1sid!2sid!4v1776081202291!5m2!1sid!2sid"
+    className="w-full h-full border-0"
+    allowFullScreen
+    loading="lazy"
+    referrerPolicy="no-referrer-when-downgrade"
+    title="Lokasi MPA HIMALAYA"
+  />
+
+  {/* Overlay Info */}
+  <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+    <div className="bg-white rounded-2xl shadow-lg px-8 py-5 flex items-center gap-4">
+      <div className="bg-forest-100 p-3 rounded-xl">
+        <MapPin size={24} className="text-forest-700" />
+      </div>
+
+      <div>
+        <p className="font-semibold text-stone-800">
+          Sekretariat MPA HIMALAYA
+        </p>
+
+        <p className="text-stone-500 text-sm">
+          Gedung PKM, Universitas Muhammadiyah Semarang
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
     </div>
   );
 }

@@ -1,3 +1,4 @@
+import logo from './img/logo-himalaya.png';
 import { useState, useEffect, useRef } from 'react';
 import { Menu, X, ChevronDown} from 'lucide-react';
 
@@ -86,7 +87,11 @@ export default function Navbar({ currentPage, navigate }: NavbarProps) {
             className={`flex items-center gap-2.5 font-bold text-xl transition-colors ${logoColor}`}
           >
             <div className={`p-1.5 rounded-lg ${scrolled || !isHero ? 'bg-forest-700' : 'bg-white/20'}`}>
-              <img src="src\components\img\logo MPA HIMALAYA.png" alt="UKM MPA HIMALAYA Logo" className="w-10 h-10" />
+              <img
+  src={logo}
+  alt="UKM MPA HIMALAYA Logo"
+  className="w-10 h-10"
+/>
             </div>
             <span className="font-serif tracking-wide">MPA HIMALAYA</span>
           </button>
