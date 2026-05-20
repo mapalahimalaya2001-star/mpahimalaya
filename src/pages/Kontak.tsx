@@ -89,7 +89,7 @@ export default function Kontak() {
                   <div>
                     <h4 className="font-semibold text-stone-800 mb-1">WhatsApp</h4>
                     <a href="https://wa.me/6281329602156" className="text-forest-600 hover:text-forest-700 text-sm font-medium">+62 813 2960 2156</a>
-                    <p className="text-stone-400 text-xs mt-0.5">Senin – Jumat, 09.00–17.00 WIB</p>
+                    <p className="text-stone-400 text-xs mt-0.5">Setiap Hari, 08.00–23.00 WIB</p>
                   </div>
                 </div>
               </div>

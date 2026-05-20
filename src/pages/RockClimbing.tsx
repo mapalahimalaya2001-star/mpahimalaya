@@ -1,27 +1,49 @@
 import { CheckCircle, Calendar, Anchor } from 'lucide-react';
 
+// IMPORT IMAGE
+import tebing1 from '../assets/images/rc/tebing1.jpg';
+import tebing2 from '../assets/images/rc/tebing2.jpg';
+import tebing3 from '../assets/images/rc/tebing3.jpg';
+import tebing4 from '../assets/images/rc/tebing4.jpg';
+import tebing5 from '../assets/images/rc/tebing5.png';
+import tebing6 from '../assets/images/rc/tebing6.jpg';
+
 const skills = [
-  'Teknik pemanjatan dasar dan lanjutan',
-  'Pemasangan pengaman (proteksi) yang aman',
-  'Pengenalan tipe batu dan jalur panjat',
-  'Rappelling dan teknik tali-temali',
-  'Perawatan dan pengecekan peralatan panjat',
-  'Top rope, lead climbing, dan bouldering',
+  'Teknik dasar panjat tebing',
+  'Belaying dan sistem pengamanan',
+  'Rappelling dan ascending',
+  'Manajemen tali dan anchor',
+  'Lead climbing dan top rope',
+  'Pengenalan peralatan panjat',
+  'Keselamatan dan manajemen risiko',
+  'Etika pemanjatan dan teamwork',
 ];
 
 const gallery = [
-  { src: 'https://images.pexels.com/photos/2755287/pexels-photo-2755287.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1', caption: 'Lead Climbing, Jawa Barat' },
-  { src: 'https://images.pexels.com/photos/4555021/pexels-photo-4555021.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1', caption: 'Latihan Tebing Pantai' },
-  { src: 'https://images.pexels.com/photos/3692617/pexels-photo-3692617.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1', caption: 'Bouldering Indoor' },
-  { src: 'https://images.pexels.com/photos/3278183/pexels-photo-3278183.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1', caption: 'Rappelling Tebing 80m' },
-  { src: 'https://images.pexels.com/photos/1659438/pexels-photo-1659438.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1', caption: 'Tim Rock Climbing' },
-  { src: 'https://images.pexels.com/photos/4056535/pexels-photo-4056535.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1', caption: 'Kompetisi Panjat Tebing' },
-];
-
-const events = [
-  { date: 'Mar 2025', title: 'Kompetisi Panjat Tebing Regional', peserta: '22 anggota' },
-  { date: 'Feb 2025', title: 'Latihan Rutin Bouldering', peserta: '40 anggota' },
-  { date: 'Des 2024', title: 'Ekspedisi Tebing Ciampea', peserta: '16 anggota' },
+  {
+    src: tebing1,
+    caption: 'Latihan Lead Climbing',
+  },
+  {
+    src: tebing2,
+    caption: 'Panjat Tebing Alam',
+  },
+  {
+    src: tebing3,
+    caption: 'Latihan Wall Climbing',
+  },
+  {
+    src: tebing4,
+    caption: 'Teknik Rappelling',
+  },
+  {
+    src: tebing5,
+    caption: 'Tim Rock Climbing',
+  },
+  {
+    src: tebing6,
+    caption: 'Kompetisi Panjat Tebing',
+  },
 ];
 
 export default function RockClimbing() {
@@ -31,15 +53,28 @@ export default function RockClimbing() {
       <section className="relative h-80 sm:h-[480px] flex items-center justify-center overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('https://images.pexels.com/photos/2755287/pexels-photo-2755287.jpeg?auto=compress&cs=tinysrgb&w=1920&h=800&dpr=1')" }}
+          style={{
+            backgroundImage:
+              "url('https://images.pexels.com/photos/2755287/pexels-photo-2755287.jpeg?auto=compress&cs=tinysrgb&w=1920&h=800&dpr=1')",
+          }}
         />
+
         <div className="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-earth-900/50 to-transparent" />
+
         <div className="relative z-10 text-center px-4">
           <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm border border-white/20 text-amber-200 text-sm font-medium px-4 py-2 rounded-full mb-5">
-            <Anchor size={14} /> Divisi Vertikal
+            <Anchor size={14} />
+            Divisi Vertikal
           </div>
-          <h1 className="font-serif text-5xl sm:text-6xl font-bold text-white mb-4">Rock Climbing</h1>
-          <p className="text-stone-300 text-lg max-w-xl mx-auto">Menapaki tebing batu, menggapai langit — kekuatan dan keberanian dalam setiap pegangan.</p>
+
+          <h1 className="font-serif text-5xl sm:text-6xl font-bold text-white mb-4">
+            Rock Climbing
+          </h1>
+
+          <p className="text-stone-300 text-lg max-w-2xl mx-auto leading-relaxed">
+            Melatih keberanian, teknik, dan kerja sama melalui dunia panjat
+            tebing dengan mengutamakan keselamatan dan disiplin.
+          </p>
         </div>
       </section>
 
@@ -48,32 +83,49 @@ export default function RockClimbing() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-14 items-center">
             <div>
-              <p className="text-earth-600 font-semibold text-sm tracking-wider uppercase mb-3">Tentang Divisi</p>
-              <h2 className="section-title mb-6">Seni Mendaki Tebing</h2>
+              <p className="text-earth-600 font-semibold text-sm tracking-wider uppercase mb-3">
+                Tentang Divisi
+              </p>
+
+              <h2 className="section-title mb-6">
+                Teknik, Keberanian, dan Disiplin
+              </h2>
+
               <p className="text-stone-600 leading-relaxed mb-4">
-                Divisi Rock Climbing MAPALA adalah wadah bagi para pemanjat yang ingin mengembangkan teknik dan kemampuan di dunia panjat tebing. Dari tebing alam hingga wall indoor, kami melatih anggota secara sistematis dan aman.
+                Divisi Rock Climbing (RC) merupakan divisi di MPA HIMALAYA
+                UNIMUS yang berfokus pada pengembangan kemampuan panjat tebing,
+                baik pada wall climbing maupun tebing alam.
               </p>
+
+              <p className="text-stone-600 leading-relaxed mb-4">
+                Divisi ini menjadi wadah pembelajaran teknik pemanjatan,
+                penggunaan peralatan vertical rescue, manajemen tali,
+                hingga keselamatan dalam aktivitas pemanjatan.
+              </p>
+
               <p className="text-stone-600 leading-relaxed mb-6">
-                Kami aktif mengikuti kompetisi tingkat regional dan nasional, serta menyelenggarakan kursus panjat tebing untuk pemula maupun tingkat lanjut. Keselamatan adalah prioritas utama di setiap kegiatan kami.
+                Selain latihan rutin, Divisi RC juga aktif dalam kegiatan
+                kompetisi, pelatihan, simulasi teknik vertical, serta
+                pengembangan fisik, mental, dan kerja sama tim.
               </p>
-              <div className="bg-amber-50 border border-amber-200 rounded-xl p-5">
-                <p className="text-amber-700 font-semibold text-sm mb-1">Statistik Divisi</p>
-                <div className="grid grid-cols-3 gap-4 mt-3">
-                  {[['28+', 'Kegiatan'], ['80+', 'Anggota'], ['6', 'Juara']].map(([val, label]) => (
-                    <div key={label} className="text-center">
-                      <div className="font-serif text-2xl font-bold text-amber-700">{val}</div>
-                      <div className="text-amber-600 text-xs">{label}</div>
-                    </div>
-                  ))}
-                </div>
-              </div>
             </div>
+
             <div>
-              <h3 className="font-serif font-bold text-stone-800 text-xl mb-5">Keahlian yang Diajarkan</h3>
+              <h3 className="font-serif font-bold text-stone-800 text-xl mb-5">
+                Keahlian yang Diajarkan
+              </h3>
+
               <ul className="grid grid-cols-1 gap-3">
-                {skills.map(s => (
-                  <li key={s} className="flex items-start gap-3 text-stone-600">
-                    <CheckCircle size={17} className="text-amber-600 shrink-0 mt-0.5" />
+                {skills.map((s) => (
+                  <li
+                    key={s}
+                    className="flex items-start gap-3 text-stone-600"
+                  >
+                    <CheckCircle
+                      size={17}
+                      className="text-amber-600 shrink-0 mt-0.5"
+                    />
+
                     {s}
                   </li>
                 ))}
@@ -87,18 +139,47 @@ export default function RockClimbing() {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <p className="text-earth-600 font-semibold text-sm tracking-wider uppercase mb-3">Dokumentasi</p>
+            <p className="text-earth-600 font-semibold text-sm tracking-wider uppercase mb-3">
+              Dokumentasi
+            </p>
+
             <h2 className="section-title">Galeri Kegiatan</h2>
           </div>
+
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
-            {gallery.map(img => (
-              <div key={img.src} className="group relative overflow-hidden rounded-xl h-48 sm:h-56">
-                <img src={img.src} alt={img.caption} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            {gallery.map((img) => (
+              <div
+                key={img.src}
+                className="group relative overflow-hidden rounded-xl h-48 sm:h-56"
+              >
+                <img
+                  src={img.src}
+                  alt={img.caption}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+
                 <div className="absolute inset-0 bg-gradient-to-t from-stone-950/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <p className="absolute bottom-3 left-3 text-white text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">{img.caption}</p>
+
+                <p className="absolute bottom-3 left-3 text-white text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  {img.caption}
+                </p>
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Motto */}
+      <section className="py-20 bg-earth-900">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <p className="text-amber-300 uppercase tracking-[0.3em] text-sm mb-5">
+            Motto Divisi
+          </p>
+
+          <h2 className="font-serif text-3xl sm:text-5xl text-white leading-relaxed">
+            “Ketinggian bukan untuk ditakuti,
+            tetapi untuk dipelajari dan ditaklukkan dengan disiplin.”
+          </h2>
         </div>
       </section>
 
@@ -106,22 +187,28 @@ export default function RockClimbing() {
       <section className="py-20 bg-stone-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <p className="text-earth-600 font-semibold text-sm tracking-wider uppercase mb-3">Program</p>
+            <p className="text-earth-600 font-semibold text-sm tracking-wider uppercase mb-3">
+              Program
+            </p>
+
             <h2 className="section-title">Kegiatan Terkini</h2>
           </div>
-          <div className="space-y-4">
-            {events.map(e => (
-              <div key={e.title} className="card p-5 flex items-center gap-5">
-                <div className="bg-amber-50 rounded-xl p-3 text-center min-w-[64px]">
-                  <Calendar size={18} className="text-amber-600 mx-auto" />
-                  <p className="text-amber-700 text-xs font-semibold mt-1">{e.date}</p>
-                </div>
-                <div>
-                  <h3 className="font-serif font-bold text-stone-800">{e.title}</h3>
-                  <p className="text-stone-500 text-sm">{e.peserta}</p>
-                </div>
+
+          <div className="card p-10 text-center">
+            <div className="flex justify-center mb-4">
+              <div className="bg-stone-100 p-4 rounded-2xl">
+                <Calendar size={32} className="text-stone-400" />
               </div>
-            ))}
+            </div>
+
+            <h3 className="font-serif text-2xl font-bold text-stone-700 mb-3">
+              Belum Ada Kegiatan
+            </h3>
+
+            <p className="text-stone-500 leading-relaxed max-w-md mx-auto">
+              Saat ini belum terdapat kegiatan terbaru dari Divisi Rock
+              Climbing. Nantikan informasi dan dokumentasi kegiatan berikutnya.
+            </p>
           </div>
         </div>
       </section>

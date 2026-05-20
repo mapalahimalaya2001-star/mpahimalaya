@@ -1,16 +1,16 @@
 import { Mail, Instagram } from 'lucide-react';
-import arrizalPhoto from './img/arrizal-kamaluddin-syat.jpeg';
-import davinaPhoto from './img/davina-rafaefa.jpeg';
-import evaPhoto from './img/eva-yunizar.jpg';
-import syukronPhoto from './img/syukron-abdullah.jpeg';
-import achmadPhoto from './img/achmad-syaifullah.png';
-import kamalPhoto from './img/kamal-fauzi-al-anshary.jpg';
-import dellaPhoto from './img/della-mekar-arthamevia.jpeg';
-import meyPhoto from './img/mey-nur-cahyaningsih.png';
-import sheilaPhoto from './img/sheila-mellynda-yufa.jpeg';
-import grymaldyPhoto from './img/grymaldy-tegar.jpeg';
-import alfiyPhoto from './img/alfiy-haaniyah-w.jpeg';
-import noerPhoto from './img/noer-rachman-m.jpeg';
+import arrizalPhoto from '../assets/images/Pengurus/arrizal-kamaluddin-syat.jpeg';
+import davinaPhoto from '../assets/images/Pengurus/davina-rafaefa.jpeg';
+import evaPhoto from '../assets/images/Pengurus/eva-yunizar.jpg';
+import syukronPhoto from '../assets/images/Pengurus/syukron-abdullah.jpeg';
+import achmadPhoto from '../assets/images/Pengurus/achmad-syaifullah.png';
+import kamalPhoto from '../assets/images/Pengurus/kamal-fauzi-al-anshary.jpg';
+import dellaPhoto from '../assets/images/Pengurus/della-mekar-arthamevia.jpeg';
+import meyPhoto from '../assets/images/Pengurus/mey-nur-cahyaningsih.png';
+import sheilaPhoto from '../assets/images/Pengurus/sheila-mellynda-yufa.jpeg';
+import grymaldyPhoto from '../assets/images/Pengurus/grymaldy-tegar.jpeg';
+import alfiyPhoto from '../assets/images/Pengurus/alfiy-haaniyah-w.jpeg';
+import noerPhoto from '../assets/images/Pengurus/noer-rachman-m.jpeg';
 
 interface Member {
   name: string;
@@ -103,27 +103,57 @@ const ketuaDivisi: Member[] = [
 
 function MemberCard({ member }: { member: Member }) {
   return (
-    <div className="card p-6 text-center group">
-      <div className="relative w-20 h-20 mx-auto mb-4">
+    <div className="card w-[280px] sm:w-[300px] p-8 text-center group hover:shadow-xl transition-all duration-300">
+      
+      {/* Foto */}
+      <div className="relative w-32 h-32 mx-auto mb-6">
         <img
           src={member.photo}
           alt={member.name}
-          className="w-20 h-20 rounded-full object-cover border-3 border-stone-100 group-hover:border-forest-300 transition-colors shadow-md"
+          className="w-32 h-32 rounded-full object-cover border-4 border-stone-100 group-hover:border-forest-300 transition-colors shadow-lg"
         />
-        <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-forest-500 rounded-full border-2 border-white" />
+
+        <div className="absolute bottom-1 right-1 w-7 h-7 bg-forest-500 rounded-full border-4 border-white" />
       </div>
-      <h3 className="font-serif font-bold text-stone-800 text-base mb-0.5">{member.name}</h3>
-      <p className="text-forest-600 font-semibold text-sm mb-1">{member.jabatan}</p>
+
+      {/* Nama */}
+      <h3 className="font-serif font-bold text-stone-800 text-2xl leading-snug mb-2">
+        {member.name}
+      </h3>
+
+      {/* Jabatan */}
+      <p className="text-forest-600 font-semibold text-xl mb-2">
+        {member.jabatan}
+      </p>
+
+      {/* Divisi */}
       {member.divisi && (
-        <p className="text-stone-500 text-xs mb-3">{member.divisi}</p>
+        <p className="text-stone-500 text-base mb-5">
+          {member.divisi}
+        </p>
       )}
+
+      {/* Sosmed */}
       {member.email && (
-        <div className="flex justify-center gap-2 mt-3">
-          <a href={`mailto:${member.email}`} className="p-1.5 bg-stone-100 hover:bg-forest-100 rounded-lg transition-colors">
-            <Mail size={13} className="text-stone-500 hover:text-forest-600" />
+        <div className="flex justify-center gap-3 mt-4">
+          <a
+            href={`mailto:${member.email}`}
+            className="p-3 bg-stone-100 hover:bg-forest-100 rounded-xl transition-colors"
+          >
+            <Mail
+              size={18}
+              className="text-stone-500 hover:text-forest-600"
+            />
           </a>
-          <a href="#" className="p-1.5 bg-stone-100 hover:bg-forest-100 rounded-lg transition-colors">
-            <Instagram size={13} className="text-stone-500 hover:text-forest-600" />
+
+          <a
+            href="#"
+            className="p-3 bg-stone-100 hover:bg-forest-100 rounded-xl transition-colors"
+          >
+            <Instagram
+              size={18}
+              className="text-stone-500 hover:text-forest-600"
+            />
           </a>
         </div>
       )}
