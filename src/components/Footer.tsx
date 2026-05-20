@@ -1,4 +1,5 @@
-import { MapPin, Mail, Phone, Instagram, Facebook, Youtube } from 'lucide-react';
+import logo from './img/logo-himalaya.png';
+import { MapPin, Mail, Phone, Instagram, Facebook, Youtube, Music2 } from 'lucide-react';
 
 type Page =
   | 'beranda'
@@ -24,7 +25,11 @@ export default function Footer({ navigate }: FooterProps) {
           <div className="lg:col-span-1">
             <div className="flex items-center gap-2.5 mb-4">
               <div className="p-1.5 bg-forest-700 rounded-lg">
-                <img src="src\components\img\logo MPA HIMALAYA.png" alt="UKM MPA HIMALAYA Logo" className="w-10 h-10" />
+                <img
+  src={logo}
+  alt="UKM MPA HIMALAYA Logo"
+  className="w-10 h-10"
+/>
               </div>
               <span className="font-serif text-xl font-bold text-white">MPA HIMALAYA</span>
             </div>
@@ -32,16 +37,42 @@ export default function Footer({ navigate }: FooterProps) {
               Mahasiswa Pecinta Alam — komunitas petualang muda yang mencintai alam, menjaga kelestarian, dan membentuk jiwa tangguh.
             </p>
             <div className="flex gap-3">
-              <a href="#" className="p-2 bg-stone-800 hover:bg-forest-700 rounded-lg transition-colors duration-200">
-                <Instagram size={17} />
-              </a>
-              <a href="#" className="p-2 bg-stone-800 hover:bg-forest-700 rounded-lg transition-colors duration-200">
-                <Facebook size={17} />
-              </a>
-              <a href="#" className="p-2 bg-stone-800 hover:bg-forest-700 rounded-lg transition-colors duration-200">
-                <Youtube size={17} />
-              </a>
-            </div>
+  <a
+    href="https://www.instagram.com/mpahimalaya_unimus/"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="p-2 bg-stone-800 hover:bg-pink-600 rounded-lg transition-colors duration-200"
+  >
+    <Instagram size={17} />
+  </a>
+
+  <a
+    href="https://www.facebook.com/"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="p-2 bg-stone-800 hover:bg-blue-600 rounded-lg transition-colors duration-200"
+  >
+    <Facebook size={17} />
+  </a>
+
+  <a
+    href="https://www.youtube.com/"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="p-2 bg-stone-800 hover:bg-red-600 rounded-lg transition-colors duration-200"
+  >
+    <Youtube size={17} />
+  </a>
+
+  <a
+    href="https://www.tiktok.com/@mpa.himalaya"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="p-2 bg-stone-800 hover:bg-black rounded-lg transition-colors duration-200"
+  >
+    <Music2 size={17} />
+  </a>
+</div>
           </div>
 
           {/* Navigasi */}
