@@ -9,13 +9,5 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
-
-    rollupOptions: {
-      output: {
-        entryFileNames: 'assets/main.js',
-        chunkFileNames: 'assets/main.js',
-        assetFileNames: 'assets/[name].[ext]',
-      },
-    },
   },
 })
