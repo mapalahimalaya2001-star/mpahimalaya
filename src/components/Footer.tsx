@@ -1,22 +1,8 @@
 import logo from './img/logo-himalaya.png';
 import { MapPin, Mail, Phone, Instagram, Facebook, Youtube, Music2 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
-type Page =
-  | 'beranda'
-  | 'profil'
-  | 'struktur'
-  | 'gunung-hutan'
-  | 'rock-climbing'
-  | 'caving'
-  | 'ppgd'
-  | 'berita'
-  | 'kontak';
-
-interface FooterProps {
-  navigate: (page: Page) => void;
-}
-
-export default function Footer({ navigate }: FooterProps) {
+export default function Footer() {
   return (
     <footer className="bg-stone-900 text-stone-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
@@ -47,7 +33,7 @@ export default function Footer({ navigate }: FooterProps) {
   </a>
 
   <a
-    href="https://www.facebook.com/"
+    href="https://www.facebook.com/mpa.himalaya"
     target="_blank"
     rel="noopener noreferrer"
     className="p-2 bg-stone-800 hover:bg-blue-600 rounded-lg transition-colors duration-200"
@@ -56,7 +42,7 @@ export default function Footer({ navigate }: FooterProps) {
   </a>
 
   <a
-    href="https://www.youtube.com/"
+    href="https://www.youtube.com/@mpahimalayaofficial6936"
     target="_blank"
     rel="noopener noreferrer"
     className="p-2 bg-stone-800 hover:bg-red-600 rounded-lg transition-colors duration-200"
@@ -80,19 +66,19 @@ export default function Footer({ navigate }: FooterProps) {
             <h4 className="text-white font-semibold mb-4 text-sm tracking-wider uppercase">Navigasi</h4>
             <ul className="space-y-2.5">
               {[
-                { label: 'Beranda', page: 'beranda' as Page },
-                { label: 'Profil Kami', page: 'profil' as Page },
-                { label: 'Struktur Pengurus', page: 'struktur' as Page },
-                { label: 'Berita & Artikel', page: 'berita' as Page },
-                { label: 'Kontak', page: 'kontak' as Page },
-              ].map(item => (
-                <li key={item.page}>
-                  <button
-                    onClick={() => navigate(item.page)}
+  { label: 'Beranda', path: '/' },
+  { label: 'Profil Kami', path: '/profil' },
+  { label: 'Struktur Pengurus', path: '/struktur-pengurus' },
+  { label: 'Berita & Artikel', path: '/berita-artikel' },
+  { label: 'Kontak', path: '/kontak' },
+].map(item => (
+                <li key={item.path}>
+                  <Link
+                    to={item.path}
                     className="text-stone-400 hover:text-forest-400 text-sm transition-colors duration-150"
                   >
                     {item.label}
-                  </button>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -103,18 +89,18 @@ export default function Footer({ navigate }: FooterProps) {
             <h4 className="text-white font-semibold mb-4 text-sm tracking-wider uppercase">Divisi</h4>
             <ul className="space-y-2.5">
               {[
-                { label: 'Gunung Hutan', page: 'gunung-hutan' as Page },
-                { label: 'Rock Climbing', page: 'rock-climbing' as Page },
-                { label: 'Caving', page: 'caving' as Page },
-                { label: 'PPGD', page: 'ppgd' as Page },
-              ].map(item => (
-                <li key={item.page}>
-                  <button
-                    onClick={() => navigate(item.page)}
+  { label: 'Gunung Hutan', path: '/divisi/gunung-hutan' },
+  { label: 'Rock Climbing', path: '/divisi/rock-climbing' },
+  { label: 'Caving', path: '/divisi/caving' },
+  { label: 'PPGD', path: '/divisi/ppgd' },
+].map(item => (
+                <li key={item.path}>
+                  <Link
+  to={item.path}
                     className="text-stone-400 hover:text-forest-400 text-sm transition-colors duration-150"
                   >
                     {item.label}
-                  </button>
+                  </Link>
                 </li>
               ))}
             </ul>

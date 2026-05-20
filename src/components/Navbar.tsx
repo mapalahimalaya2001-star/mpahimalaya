@@ -1,36 +1,21 @@
 import logo from './img/logo-himalaya.png';
 import { useState, useEffect, useRef } from 'react';
 import { Menu, X, ChevronDown} from 'lucide-react';
-
-type Page =
-  | 'beranda'
-  | 'profil'
-  | 'struktur'
-  | 'gunung-hutan'
-  | 'rock-climbing'
-  | 'caving'
-  | 'ppgd'
-  | 'berita'
-  | 'kontak';
-
-interface NavbarProps {
-  currentPage: Page;
-  navigate: (page: Page) => void;
-}
+import { Link, useLocation } from 'react-router-dom';
 
 const tentangItems = [
-  { label: 'Profil Kami', page: 'profil' as Page },
-  { label: 'Struktur Pengurus', page: 'struktur' as Page },
+  { label: 'Profil Kami', path: '/profil' },
+  { label: 'Struktur Pengurus', path: '/struktur-pengurus' },
 ];
 
 const divisiItems = [
-  { label: 'Gunung Hutan', page: 'gunung-hutan' as Page },
-  { label: 'Rock Climbing', page: 'rock-climbing' as Page },
-  { label: 'Caving', page: 'caving' as Page },
-  { label: 'PPGD', page: 'ppgd' as Page },
+  { label: 'Gunung Hutan', path: '/divisi/gunung-hutan' },
+  { label: 'Rock Climbing', path: '/divisi/rock-climbing' },
+  { label: 'Caving', path: '/divisi/caving' },
+  { label: 'PPGD', path: '/divisi/ppgd' },
 ];
 
-export default function Navbar({ currentPage, navigate }: NavbarProps) {
+export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [tentangOpen, setTentangOpen] = useState(false);
@@ -40,6 +25,8 @@ export default function Navbar({ currentPage, navigate }: NavbarProps) {
 
   const tentangRef = useRef<HTMLDivElement>(null);
   const divisiRef = useRef<HTMLDivElement>(null);
+  const location = useLocation();
+  const currentPage = location.pathname;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -60,17 +47,13 @@ export default function Navbar({ currentPage, navigate }: NavbarProps) {
     return () => document.removeEventListener('mousedown', handleClick);
   }, []);
 
-  const go = (page: Page) => {
-    navigate(page);
-    setMobileOpen(false);
-    setTentangOpen(false);
-    setDivisiOpen(false);
-  };
+  const isTentang =
+  currentPage === '/profil' ||
+  currentPage === '/struktur-pengurus';
+  const isDivisi =
+  currentPage.includes('/divisi/');
 
-  const isTentang = currentPage === 'profil' || currentPage === 'struktur';
-  const isDivisi = ['gunung-hutan', 'rock-climbing', 'caving', 'ppgd'].includes(currentPage);
-
-  const isHero = currentPage === 'beranda';
+  const isHero = currentPage === '/';
   const navBg = scrolled || !isHero
     ? 'bg-white/95 backdrop-blur-md shadow-sm border-b border-stone-100'
     : 'bg-transparent';
@@ -82,8 +65,8 @@ export default function Navbar({ currentPage, navigate }: NavbarProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-18">
           {/* Logo */}
-          <button
-            onClick={() => go('beranda')}
+          <Link
+  to="/"
             className={`flex items-center gap-2.5 font-bold text-xl transition-colors ${logoColor}`}
           >
             <div className={`p-1.5 rounded-lg ${scrolled || !isHero ? 'bg-forest-700' : 'bg-white/20'}`}>
@@ -94,16 +77,16 @@ export default function Navbar({ currentPage, navigate }: NavbarProps) {
 />
             </div>
             <span className="font-serif tracking-wide">MPA HIMALAYA</span>
-          </button>
+          </Link>
 
           {/* Desktop Nav */}
           <div className="hidden lg:flex items-center gap-1">
-            <button
-              onClick={() => go('beranda')}
+            <Link
+  to="/"
               className={`nav-link px-4 py-2 rounded-lg text-sm font-semibold transition-colors ${textColor} ${currentPage === 'beranda' ? 'text-forest-600' : ''}`}
             >
               Beranda
-            </button>
+            </Link>
 
             {/* Tentang Dropdown */}
             <div ref={tentangRef} className="relative">
@@ -117,9 +100,11 @@ export default function Navbar({ currentPage, navigate }: NavbarProps) {
               {tentangOpen && (
                 <div className="absolute top-full left-0 mt-2 w-52 bg-white rounded-xl shadow-lg border border-stone-100 p-1.5">
                   {tentangItems.map(item => (
-                    <button key={item.page} onClick={() => go(item.page)} className="dropdown-item w-full text-left">
+                    <Link
+  key={item.path}
+  to={item.path} className="dropdown-item w-full text-left">
                       {item.label}
-                    </button>
+                    </Link>
                   ))}
                 </div>
               )}
@@ -137,27 +122,28 @@ export default function Navbar({ currentPage, navigate }: NavbarProps) {
               {divisiOpen && (
                 <div className="absolute top-full left-0 mt-2 w-52 bg-white rounded-xl shadow-lg border border-stone-100 p-1.5">
                   {divisiItems.map(item => (
-                    <button key={item.page} onClick={() => go(item.page)} className="dropdown-item w-full text-left">
+                    <Link
+  key={item.path}
+  to={item.path} className="dropdown-item w-full text-left">
                       {item.label}
-                    </button>
+                    </Link>
                   ))}
                 </div>
               )}
             </div>
 
-            <button
-              onClick={() => go('berita')}
+            <Link
+  to="/berita-artikel"
               className={`nav-link px-4 py-2 rounded-lg text-sm font-semibold transition-colors ${textColor} ${currentPage === 'berita' ? 'text-forest-600' : ''}`}
             >
               Berita & Artikel
-            </button>
+            </Link>
 
-            <button
-              onClick={() => go('kontak')}
+            <Link to="/kontak"
               className={`ml-2 bg-forest-700 hover:bg-forest-800 text-white text-sm font-semibold px-5 py-2 rounded-lg transition-colors duration-200`}
             >
               Kontak
-            </button>
+            </Link>
           </div>
 
           {/* Mobile Hamburger */}
@@ -174,9 +160,10 @@ export default function Navbar({ currentPage, navigate }: NavbarProps) {
       {mobileOpen && (
         <div className="lg:hidden bg-white border-t border-stone-100 shadow-lg">
           <div className="px-4 py-4 space-y-1">
-            <button onClick={() => go('beranda')} className="block w-full text-left px-4 py-3 rounded-lg text-stone-700 font-semibold hover:bg-forest-50 hover:text-forest-700 transition-colors">
+            <Link
+  to="/" className="block w-full text-left px-4 py-3 rounded-lg text-stone-700 font-semibold hover:bg-forest-50 hover:text-forest-700 transition-colors">
               Beranda
-            </button>
+            </Link>
 
             {/* Mobile Tentang */}
             <div>
@@ -190,9 +177,11 @@ export default function Navbar({ currentPage, navigate }: NavbarProps) {
               {mobileTentangOpen && (
                 <div className="ml-4 space-y-1 mt-1">
                   {tentangItems.map(item => (
-                    <button key={item.page} onClick={() => go(item.page)} className="block w-full text-left px-4 py-2.5 rounded-lg text-stone-600 hover:bg-forest-50 hover:text-forest-700 transition-colors text-sm">
+                    <Link
+  key={item.path}
+  to={item.path} className="block w-full text-left px-4 py-2.5 rounded-lg text-stone-600 hover:bg-forest-50 hover:text-forest-700 transition-colors text-sm">
                       {item.label}
-                    </button>
+                    </Link>
                   ))}
                 </div>
               )}
@@ -210,20 +199,22 @@ export default function Navbar({ currentPage, navigate }: NavbarProps) {
               {mobileDivisiOpen && (
                 <div className="ml-4 space-y-1 mt-1">
                   {divisiItems.map(item => (
-                    <button key={item.page} onClick={() => go(item.page)} className="block w-full text-left px-4 py-2.5 rounded-lg text-stone-600 hover:bg-forest-50 hover:text-forest-700 transition-colors text-sm">
+                    <Link
+  key={item.path}
+  to={item.path} className="block w-full text-left px-4 py-2.5 rounded-lg text-stone-600 hover:bg-forest-50 hover:text-forest-700 transition-colors text-sm">
                       {item.label}
-                    </button>
+                    </Link>
                   ))}
                 </div>
               )}
             </div>
 
-            <button onClick={() => go('berita')} className="block w-full text-left px-4 py-3 rounded-lg text-stone-700 font-semibold hover:bg-forest-50 hover:text-forest-700 transition-colors">
+            <Link to="/berita-artikel" className="block w-full text-left px-4 py-3 rounded-lg text-stone-700 font-semibold hover:bg-forest-50 hover:text-forest-700 transition-colors">
               Berita & Artikel
-            </button>
-            <button onClick={() => go('kontak')} className="block w-full text-left px-4 py-3 rounded-lg bg-forest-700 text-white font-semibold hover:bg-forest-800 transition-colors mt-2">
+            </Link>
+            <Link to="/kontak" className="block w-full text-left px-4 py-3 rounded-lg bg-forest-700 text-white font-semibold hover:bg-forest-800 transition-colors mt-2">
               Kontak
-            </button>
+            </Link>
           </div>
         </div>
       )}
