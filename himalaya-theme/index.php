@@ -8,7 +8,7 @@
     <title>MPA Himalaya</title>
 
     <link rel="stylesheet"
-        href="<?php echo get_template_directory_uri(); ?>/assets/index.css">
+        href="<?php echo get_template_directory_uri(); ?>/assets/index-CMoChZ1X.css">
 </head>
 
 <body>
@@ -16,7 +16,7 @@
 <div id="root"></div>
 
 <script type="module"
-    src="<?php echo get_template_directory_uri(); ?>/assets/main.js"></script>
+    src="<?php echo get_template_directory_uri(); ?>/assets/index-B-nrDoTa.js"></script>
 
 </body>
 

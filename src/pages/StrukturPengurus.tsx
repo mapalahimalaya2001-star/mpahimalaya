@@ -4,10 +4,10 @@ import arrizalPhoto from '../assets/images/Pengurus/arrizal-kamaluddin-syat.jpeg
 import davinaPhoto from '../assets/images/Pengurus/davina-rafaefa.jpeg';
 import evaPhoto from '../assets/images/Pengurus/eva-yunizar.png';
 import syukronPhoto from '../assets/images/Pengurus/syukron-abdullah.png';
-import achmadPhoto from '../assets/images/Pengurus/achmad-syaifullah.png';
+import achmadPhoto from '../assets/images/Pengurus/achmad-syaifullah-new.png';
 import kamalPhoto from '../assets/images/Pengurus/kamal-fauzi-al-anshary.jpg';
 import dellaPhoto from '../assets/images/Pengurus/della-mekar-arthamevia.jpeg';
-import meyPhoto from '../assets/images/Pengurus/mey-nur-cahyaningsih.png';
+import meyPhoto from '../assets/images/Pengurus/mey-nur-cahyaningsih-new.png';
 import sheilaPhoto from '../assets/images/Pengurus/sheila-mellynda-yufa.jpeg';
 import grymaldyPhoto from '../assets/images/Pengurus/grymaldy-tegar.jpeg';
 import alfiyPhoto from '../assets/images/Pengurus/alfiy-haaniyah-w.jpeg';
