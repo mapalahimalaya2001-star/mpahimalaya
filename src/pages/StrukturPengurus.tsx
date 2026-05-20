@@ -1,8 +1,9 @@
 import { Mail, Instagram } from 'lucide-react';
+import bgPengurus from '../assets/images/pengurus/bg-pengurus.jpg';
 import arrizalPhoto from '../assets/images/Pengurus/arrizal-kamaluddin-syat.jpeg';
 import davinaPhoto from '../assets/images/Pengurus/davina-rafaefa.jpeg';
-import evaPhoto from '../assets/images/Pengurus/eva-yunizar.jpg';
-import syukronPhoto from '../assets/images/Pengurus/syukron-abdullah.jpeg';
+import evaPhoto from '../assets/images/Pengurus/eva-yunizar.png';
+import syukronPhoto from '../assets/images/Pengurus/syukron-abdullah.png';
 import achmadPhoto from '../assets/images/Pengurus/achmad-syaifullah.png';
 import kamalPhoto from '../assets/images/Pengurus/kamal-fauzi-al-anshary.jpg';
 import dellaPhoto from '../assets/images/Pengurus/della-mekar-arthamevia.jpeg';
@@ -45,7 +46,7 @@ const manajemen: Member[] = [
   {
     name: 'Syukron Abdullah',
     jabatan: 'Kabid Pendidikan',
-    divisi: 'Bidang Pendidikan',
+    divisi: 'Kepala Bidang Pendidikan',
     photo: syukronPhoto,
   },
   {
@@ -69,7 +70,7 @@ const manajemen: Member[] = [
   {
     name: 'Mey Nur Cahyaningsih',
     jabatan: 'Kabag Logistik',
-    divisi: 'Bagian Logistik',
+    divisi: 'Kepala Bagian Logistik',
     photo: meyPhoto,
   },
 ];
@@ -78,7 +79,7 @@ const ketuaDivisi: Member[] = [
   {
     name: 'Sheila Mellynda Yufa',
     jabatan: 'Kadiv RG',
-    divisi: 'Rock Garden',
+    divisi: 'Gunung Hutan',
     photo: sheilaPhoto,
   },
   {
@@ -103,7 +104,7 @@ const ketuaDivisi: Member[] = [
 
 function MemberCard({ member }: { member: Member }) {
   return (
-    <div className="card w-[280px] sm:w-[300px] p-8 text-center group hover:shadow-xl transition-all duration-300">
+    <div className="card w-full max-w-[300px] p-8 text-center group hover:shadow-xl transition-all duration-300">
       
       {/* Foto */}
       <div className="relative w-32 h-32 mx-auto mb-6">
@@ -165,18 +166,30 @@ export default function StrukturPengurus() {
   return (
     <div className="pt-16">
       {/* Hero */}
-      <section className="relative h-72 sm:h-96 flex items-center justify-center overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('https://images.pexels.com/photos/1024975/pexels-photo-1024975.jpeg?auto=compress&cs=tinysrgb&w=1920&h=600&dpr=1')" }}
-        />
-        <div className="absolute inset-0 bg-forest-900/65" />
-        <div className="relative z-10 text-center px-4">
-          <p className="text-forest-300 font-semibold text-sm tracking-wider uppercase mb-3">Tentang Kami</p>
-          <h1 className="font-serif text-4xl sm:text-5xl font-bold text-white">Struktur Pengurus</h1>
-          <p className="text-stone-300 mt-3 max-w-xl mx-auto">Periode Kepengurusan 2025/2026</p>
-        </div>
-      </section>
+<section className="relative h-72 sm:h-96 flex items-center justify-center overflow-hidden">
+  <div
+    className="absolute inset-0 bg-cover bg-[center_30%]"
+    style={{
+      backgroundImage: `url(${bgPengurus})`,
+    }}
+  />
+
+  <div className="absolute inset-0 bg-forest-900/65" />
+
+  <div className="relative z-10 text-center px-4">
+    <p className="text-forest-300 font-semibold text-sm tracking-wider uppercase mb-3">
+      Tentang Kami
+    </p>
+
+    <h1 className="font-serif text-4xl sm:text-5xl font-bold text-white">
+      Struktur Pengurus
+    </h1>
+
+    <p className="text-stone-300 mt-3 max-w-xl mx-auto">
+      Periode Kepengurusan 2025/2026
+    </p>
+  </div>
+</section>
 
       {/* Pengurus Inti */}
       <section className="py-20 bg-stone-50">
@@ -198,9 +211,11 @@ export default function StrukturPengurus() {
             <p className="text-forest-600 font-semibold text-sm tracking-wider uppercase mb-3">Koordinasi Teknis</p>
             <h2 className="section-title">Pengurus Manajemen</h2>
           </div>
-          <div className="flex flex-wrap justify-center gap-6">
-            {manajemen.map(m => <MemberCard key={m.name} member={m} />)}
-          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-5 gap-10 justify-items-center max-w-[1700px] mx-auto">
+  {manajemen.map(m => (
+    <MemberCard key={m.name} member={m} />
+  ))}
+</div>
         </div>
       </section>
 
@@ -211,9 +226,11 @@ export default function StrukturPengurus() {
             <p className="text-forest-600 font-semibold text-sm tracking-wider uppercase mb-3">Pelaksanaan Divisi</p>
             <h2 className="section-title">Ketua Divisi</h2>
           </div>
-          <div className="flex flex-wrap justify-center gap-6">
-            {ketuaDivisi.map(m => <MemberCard key={m.name} member={m} />)}
-          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 justify-items-center">
+  {ketuaDivisi.map(m => (
+    <MemberCard key={m.name} member={m} />
+  ))}
+</div>
         </div>
       </section>
 

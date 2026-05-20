@@ -1,4 +1,11 @@
 import { CheckCircle, Calendar, Mountain } from 'lucide-react';
+import semeruImg from '../assets/images/gh/semeru.jpeg';
+import rinjaniImg from '../assets/images/gh/rinjani.jpeg';
+import survivalImg from '../assets/images/gh/survival.jpeg';
+import bromoImg from '../assets/images/gh/bromo.jpeg';
+import campingImg from '../assets/images/gh/camping.jpeg';
+import konservasiImg from '../assets/images/gh/konservasi.jpeg';
+
 
 const skills = [
   'Navigasi darat menggunakan peta dan kompas',
@@ -11,29 +18,30 @@ const skills = [
   'Etika pendakian dan Leave No Trace',
 ];
 
+// GALLERY
 const gallery = [
   {
-    src: 'https://images.pexels.com/photos/1365425/pexels-photo-1365425.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1',
+    src: semeruImg,
     caption: 'Pendakian Gunung Semeru',
   },
   {
-    src: 'https://images.pexels.com/photos/1366919/pexels-photo-1366919.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1',
+    src: rinjaniImg,
     caption: 'Ekspedisi Gunung Rinjani',
   },
   {
-    src: 'https://images.pexels.com/photos/1761279/pexels-photo-1761279.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1',
+    src: survivalImg,
     caption: 'Jungle Tracking dan Survival',
   },
   {
-    src: 'https://images.pexels.com/photos/1183099/pexels-photo-1183099.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1',
+    src: bromoImg,
     caption: 'Pendakian Gunung Bromo',
   },
   {
-    src: 'https://images.pexels.com/photos/2662116/pexels-photo-2662116.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1',
+    src: campingImg,
     caption: 'Camping dan Bivouac',
   },
   {
-    src: 'https://images.pexels.com/photos/624015/pexels-photo-624015.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1',
+    src: konservasiImg,
     caption: 'Konservasi dan Jelajah Alam',
   },
 ];

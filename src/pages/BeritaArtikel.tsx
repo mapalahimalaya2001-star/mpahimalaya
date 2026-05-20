@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Calendar, Clock, Tag, Search } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 interface Article {
   id: number;
@@ -159,7 +160,10 @@ export default function BeritaArtikel() {
 
           {/* Featured Article */}
           {featured && activeCategory === 'Semua' && !searchQuery && (
-            <div className="card mb-10 group overflow-hidden lg:flex">
+            <Link
+  to={`/artikel/${featured.id}`}
+  className="card mb-10 group overflow-hidden lg:flex block"
+>
               <div className="lg:w-1/2 h-56 lg:h-auto overflow-hidden">
                 <img
                   src={featured.image}
@@ -183,7 +187,7 @@ export default function BeritaArtikel() {
                   <span className="flex items-center gap-1"><Clock size={12} /> {featured.readTime}</span>
                 </div>
               </div>
-            </div>
+            </Link>
           )}
 
           {/* Articles Grid */}
@@ -195,7 +199,11 @@ export default function BeritaArtikel() {
           ) : (
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-7">
               {(activeCategory === 'Semua' && !searchQuery ? rest : filtered).map(article => (
-                <div key={article.id} className="card group cursor-pointer">
+                <Link
+  to={`/artikel/${article.id}`}
+  key={article.id}
+  className="card group cursor-pointer block"
+>
                   <div className="overflow-hidden h-48">
                     <img
                       src={article.image}
@@ -218,7 +226,7 @@ export default function BeritaArtikel() {
                       <span className="flex items-center gap-1"><Clock size={11} /> {article.readTime}</span>
                     </div>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           )}
