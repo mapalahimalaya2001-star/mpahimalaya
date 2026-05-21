@@ -1,54 +1,57 @@
-import { useParams } from 'react-router-dom';
-import { Calendar, Clock, ArrowLeft } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Calendar, ArrowLeft } from 'lucide-react';
 
-const articles = [
-  {
-    id: 1,
-    title: 'Ekspedisi Puncak Semeru: Menggapai Mahameru di Musim Kemarau',
-    content: `
-      Sebanyak 14 anggota MAPALA berhasil menyelesaikan pendakian
-      ke Gunung Semeru dengan kondisi cuaca yang sangat bersahabat.
+interface WPPost {
+  id: number;
+  date: string;
+  title: {
+    rendered: string;
+  };
+  content: {
+    rendered: string;
+  };
+  _embedded?: {
+  ['wp:featuredmedia']?: Array<{
+    source_url: string;
+  }>;
 
-      Perjalanan dimulai dari Ranupani menuju Kalimati,
-      kemudian dilanjutkan summit attack menuju Mahameru.
-
-      Selain kegiatan pendakian, tim juga melakukan dokumentasi,
-      observasi lingkungan, dan edukasi pendaki mengenai kebersihan gunung.
-    `,
-    image:
-      'https://images.pexels.com/photos/1366919/pexels-photo-1366919.jpeg?auto=compress&cs=tinysrgb&w=1200',
-    date: '12 April 2025',
-    readTime: '5 menit',
-    category: 'Gunung Hutan',
-  },
-
-  {
-    id: 2,
-    title: 'Juara 2 Kompetisi Panjat Tebing Regional Jawa Tengah 2025',
-    content: `
-      Tim Rock Climbing MAPALA berhasil meraih juara 2
-      dalam kompetisi panjat tebing regional Jawa Tengah 2025.
-
-      Kompetisi diikuti berbagai universitas dan komunitas
-      pecinta olahraga panjat tebing.
-    `,
-    image:
-      'https://images.pexels.com/photos/2755287/pexels-photo-2755287.jpeg?auto=compress&cs=tinysrgb&w=1200',
-    date: '28 Maret 2025',
-    readTime: '3 menit',
-    category: 'Rock Climbing',
-  },
-];
+  author?: Array<{
+    name: string;
+  }>;
+};
+}
 
 export default function DetailArtikel() {
   const { id } = useParams();
 
-  const article = articles.find(
-    (a) => a.id === Number(id)
-  );
+  const [article, setArticle] = useState<WPPost | null>(null);
+  const [loading, setLoading] = useState(true);
 
-  if (!article) {
+  useEffect(() => {
+    fetch(
+      `https://mpahimalaya.unimus.ac.id/wp-json/wp/v2/posts/${id}?_embed`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setArticle(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error(err);
+        setLoading(false);
+      });
+  }, [id]);
+
+  if (loading) {
+    return (
+      <div className="pt-32 text-center">
+        Memuat artikel...
+      </div>
+    );
+  }
+
+  if (!article || !article.id) {
     return (
       <div className="pt-32 text-center">
         <h1 className="text-3xl font-bold">
@@ -60,11 +63,14 @@ export default function DetailArtikel() {
 
   return (
     <div className="pt-16">
-      {/* Hero */}
-      <section className="relative h-[420px] overflow-hidden">
+      <section className="relative h-[320px] md:h-[420px] overflow-hidden">
         <img
-          src={article.image}
-          alt={article.title}
+          src={
+            article._embedded?.['wp:featuredmedia']?.[0]
+              ?.source_url ||
+            'https://via.placeholder.com/1200x600'
+          }
+          alt={article.title.rendered}
           className="w-full h-full object-cover"
         />
 
@@ -80,37 +86,79 @@ export default function DetailArtikel() {
               Kembali
             </Link>
 
-            <span className="inline-block bg-forest-700 px-3 py-1 rounded-full text-sm mb-5">
-              {article.category}
-            </span>
-
-            <h1 className="font-serif text-4xl sm:text-6xl font-bold leading-tight mb-6">
-              {article.title}
+            <h1 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold leading-tight max-w-4xl">
+              {article.title.rendered}
             </h1>
 
-            <div className="flex items-center gap-5 text-stone-200">
+            <div className="flex flex-wrap items-center gap-5 text-stone-200 mt-4">
               <span className="flex items-center gap-2">
                 <Calendar size={16} />
-                {article.date}
+                {new Date(article.date).toLocaleDateString('id-ID')}
               </span>
-
-              <span className="flex items-center gap-2">
-                <Clock size={16} />
-                {article.readTime}
+              <span>
+                Oleh {article._embedded?.author?.[0]?.name || 'MPA HIMALAYA'}
               </span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Content */}
-      <section className="py-20 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="prose prose-lg max-w-none text-stone-700 leading-relaxed whitespace-pre-line">
-            {article.content}
-          </div>
+      <section className="py-16 md:py-20 bg-white">
+  <div className="max-w-5xl mx-auto px-6">
+
+    <div className="bg-white rounded-3xl shadow-sm border border-stone-100 p-8 md:p-12">
+
+      <div className="flex flex-wrap items-center gap-4 mb-8 pb-6 border-b border-stone-200">
+        <div className="flex items-center gap-2 text-stone-600">
+          <Calendar size={18} />
+          <span>
+            {new Date(article.date).toLocaleDateString('id-ID', {
+              day: 'numeric',
+              month: 'long',
+              year: 'numeric',
+            })}
+          </span>
         </div>
-      </section>
+
+        <span className="text-stone-300">•</span>
+
+        <span className="text-forest-700 font-medium">
+          MPA HIMALAYA UNIMUS
+        </span>
+      </div>
+
+      <article
+        className="
+          prose
+          prose-lg
+          max-w-none
+
+          prose-headings:font-serif
+          prose-headings:text-stone-900
+          prose-headings:font-bold
+
+          prose-p:text-stone-700
+          prose-p:leading-8
+
+          prose-strong:text-stone-900
+
+          prose-img:rounded-2xl
+          prose-img:shadow-lg
+
+          prose-ul:list-disc
+          prose-ol:list-decimal
+
+          prose-a:text-forest-700
+          prose-a:no-underline
+          hover:prose-a:text-forest-800
+        "
+        dangerouslySetInnerHTML={{
+          __html: article.content.rendered,
+        }}
+      />
+    </div>
+  </div>
+</section>
     </div>
   );
 }
